@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Home, Users, Briefcase, TrendingUp, Map, Menu, X, ChevronDown, Calendar, CheckCircle2,
-  Book, Handshake, Search, Bell, Settings, MessageSquare, CircleCheck, Target, Hourglass, UserX, Building, FileText, ClipboardCheck, Building2, Zap, Award, UserPlus
+  Book, Handshake, Target, Hourglass, UserX, Building, FileText, ClipboardCheck, Building2, Zap, Award, UserPlus
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -156,7 +156,7 @@ const Overall = ({ onNavigate }) => {
 };
 
 
-// Training Page Component
+
 const Training = () => {
   const monthlyData = [
     { month: 'Before March', enrolled: 240, wage: 165, self: 75, completed: 196, employed: 121, selfEmployed: 75 },
@@ -204,7 +204,7 @@ const Training = () => {
                 </ul>
               </div>
             ))}
-            {/* Total Column */}
+            
             <div className="flex-none w-56 bg-teal-50 p-5 rounded-lg shadow-md border border-teal-300">
               <h4 className="font-bold text-teal-800 text-lg mb-3">Total</h4>
               <ul className="text-sm text-teal-800 space-y-2">
@@ -243,7 +243,7 @@ const Training = () => {
 };
 
 
-// Partnership Page Component
+// Partnership Components
 const PartnershipAlliance = () => {
   return (
     <div className="p-6">
@@ -310,9 +310,9 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState('overall');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedView, setSelectedView] = useState('Cumulative');
-  const [currentDate, setCurrentDate] = useState(''); // New state for the current date
+  const [currentDate, setCurrentDate] = useState(''); 
 
-  // Highlight data for the carousel
+  // Highlight data for the carousel in  Heading Section
   const highlights = [
     { text: 'CSR: Target: 1000 | ID: 720 | Left: 280 | Pipe: 30' },
     { text: 'Gov: Target: 2500 | ID: 180 | Left: 2320 | Pipe: 1800' },
@@ -321,19 +321,21 @@ const App = () => {
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0);
 
   useEffect(() => {
-    
+  
     const getCurrentDate = () => {
       const today = new Date();
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return today.toLocaleDateString('en-US', options);
     };
-    setCurrentDate(getCurrentDate()); // Set the date on component mount
+    setCurrentDate(getCurrentDate()); 
 
+   
     const interval = setInterval(() => {
       setCurrentHighlightIndex(prevIndex => 
         (prevIndex + 1) % highlights.length
       );
-    }, 5000); // Changes highlight in every 5 seconds
+    }, 5000); // Change highlight in every 5 seconds
+
 
 
     return () => clearInterval(interval);
@@ -400,7 +402,7 @@ const App = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        
+        {/* Header */}
         <header className="bg-white shadow-md p-4 flex flex-wrap items-center justify-between z-40">
           <div className="flex items-center mb-4 md:mb-0">
             <button className="md:hidden text-gray-600 mr-4" onClick={() => setIsSidebarOpen(true)}>
@@ -409,7 +411,7 @@ const App = () => {
             <h1 className="text-2xl font-bold text-gray-800">Review</h1>
           </div>
           <div className="flex flex-wrap items-center space-x-6">
-            <div className="flex items-center bg-indigo-700 text-white px-5 py-2 rounded-full text-base font-medium shadow-md">
+            <div className="md:flex items-center bg-indigo-700 text-white px-5 py-2 rounded-full text-base font-medium shadow-md hidden">
               <span className="mr-3">Highlights</span>
               <span className="bg-indigo-800 px-3 py-1 rounded-full text-sm">
                 {highlights[currentHighlightIndex].text}
@@ -436,7 +438,7 @@ const App = () => {
           </div>
         </header>
 
-     
+      
         <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
           {renderPageContent()}
         </main>
