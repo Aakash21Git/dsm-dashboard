@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Home, Users, Briefcase, TrendingUp, Map, Menu, X, ChevronDown, Calendar, CheckCircle2,
-  Book, Handshake, Target, Hourglass, UserX, Building, FileText, ClipboardCheck, Building2, Zap, Award, UserPlus
+  Book, Handshake, Search, Bell, Settings, MessageSquare, CircleCheck, Target, Hourglass, UserX, Building, FileText, ClipboardCheck, Building2, Zap, Award, UserPlus
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -13,7 +13,7 @@ const DashboardCard = ({ title, children, className = '' }) => (
   </div>
 );
 
-// Overall Page Components
+
 const Overall = ({ onNavigate }) => {
   const overallData = {
     totalTarget: 8000,
@@ -156,7 +156,7 @@ const Overall = ({ onNavigate }) => {
 };
 
 
-
+// Training Page Component
 const Training = () => {
   const monthlyData = [
     { month: 'Before March', enrolled: 240, wage: 165, self: 75, completed: 196, employed: 121, selfEmployed: 75 },
@@ -243,7 +243,7 @@ const Training = () => {
 };
 
 
-// Partnership & Alliance Page Component
+// Partnership Page Component
 const PartnershipAlliance = () => {
   return (
     <div className="p-6">
@@ -312,7 +312,7 @@ const App = () => {
   const [selectedView, setSelectedView] = useState('Cumulative');
   const [currentDate, setCurrentDate] = useState(''); // New state for the current date
 
-  // Highlighting data for the carousel
+  // Highlight data for the carousel
   const highlights = [
     { text: 'CSR: Target: 1000 | ID: 720 | Left: 280 | Pipe: 30' },
     { text: 'Gov: Target: 2500 | ID: 180 | Left: 2320 | Pipe: 1800' },
@@ -321,22 +321,21 @@ const App = () => {
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0);
 
   useEffect(() => {
-    // Function to get and format the current date
+    
     const getCurrentDate = () => {
       const today = new Date();
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return today.toLocaleDateString('en-US', options);
     };
-    setCurrentDate(getCurrentDate()); 
+    setCurrentDate(getCurrentDate()); // Set the date on component mount
 
-   
     const interval = setInterval(() => {
-      setCurrentHighlightIndex(prevIndex =>
+      setCurrentHighlightIndex(prevIndex => 
         (prevIndex + 1) % highlights.length
       );
-    }, 5000); // Changes will in highlight every 5 seconds
+    }, 5000); // Changes highlight in every 5 seconds
 
-  
+
     return () => clearInterval(interval);
   }, []);
 
@@ -399,17 +398,17 @@ const App = () => {
         </nav>
       </aside>
 
-      
+      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-       
-        <header className="bg-white shadow-md p-4 flex items-center justify-between z-40">
-          <div className="flex items-center">
+        
+        <header className="bg-white shadow-md p-4 flex flex-wrap items-center justify-between z-40">
+          <div className="flex items-center mb-4 md:mb-0">
             <button className="md:hidden text-gray-600 mr-4" onClick={() => setIsSidebarOpen(true)}>
               <Menu size={28} />
             </button>
             <h1 className="text-2xl font-bold text-gray-800">Review</h1>
           </div>
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-wrap items-center space-x-6">
             <div className="flex items-center bg-indigo-700 text-white px-5 py-2 rounded-full text-base font-medium shadow-md">
               <span className="mr-3">Highlights</span>
               <span className="bg-indigo-800 px-3 py-1 rounded-full text-sm">
@@ -433,12 +432,11 @@ const App = () => {
                 <ChevronDown size={16} />
               </div>
             </div>
-
             <img src="https://placehold.co/36x36/cccccc/333333?text=A" alt="User Avatar" className="rounded-full border-2 border-indigo-500" />
           </div>
         </header>
 
-  
+     
         <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
           {renderPageContent()}
         </main>
