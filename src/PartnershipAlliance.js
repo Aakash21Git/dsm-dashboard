@@ -4,7 +4,7 @@ import {
   Users, Calendar, UserPlus, Award
 } from 'lucide-react';
 
-// Helper component for common card structure
+
 const DashboardCard = ({ title, children, className = '' }) => (
   <div className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ${className}`}>
     <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-3 border-gray-200">{title}</h3>
@@ -12,7 +12,7 @@ const DashboardCard = ({ title, children, className = '' }) => (
   </div>
 );
 
-// Partnership & Alliance Page Component
+
 const PartnershipAlliance = () => {
   return (
     <div className="p-6">

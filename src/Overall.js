@@ -2,7 +2,7 @@ import React from 'react';
 import { Target, CheckCircle2, Hourglass, UserX } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-// Helper component for common card structure
+
 const DashboardCard = ({ title, children, className = '' }) => (
   <div className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ${className}`}>
     <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-3 border-gray-200">{title}</h3>
@@ -10,7 +10,7 @@ const DashboardCard = ({ title, children, className = '' }) => (
   </div>
 );
 
-// Target Allocation Page Component (Overall)
+
 const Overall = ({ onNavigate }) => {
   const overallData = {
     totalTarget: 8000,

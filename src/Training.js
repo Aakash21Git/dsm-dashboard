@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, Briefcase, TrendingUp, Book, Target, Zap, Award, Building, CheckCircle2, Calendar } from 'lucide-react';
 
-// Helper component for common card structure
+
 const DashboardCard = ({ title, children, className = '' }) => (
   <div className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ${className}`}>
     <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-3 border-gray-200">{title}</h3>
@@ -9,7 +9,7 @@ const DashboardCard = ({ title, children, className = '' }) => (
   </div>
 );
 
-// Training Page Component
+
 const Training = () => {
   const monthlyData = [
     { month: 'Before March', enrolled: 240, wage: 165, self: 75, completed: 196, employed: 121, selfEmployed: 75 },
@@ -57,7 +57,7 @@ const Training = () => {
                 </ul>
               </div>
             ))}
-            {/* Total Column */}
+            {/* Total Columns */}
             <div className="flex-none w-56 bg-teal-50 p-5 rounded-lg shadow-md border border-teal-300">
               <h4 className="font-bold text-teal-800 text-lg mb-3">Total</h4>
               <ul className="text-sm text-teal-800 space-y-2">

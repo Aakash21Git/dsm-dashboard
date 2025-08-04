@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
   Home, Users, Briefcase, TrendingUp, Map, Menu, X, ChevronDown, Calendar, CheckCircle2,
-  Book, Handshake,  Target, Hourglass, UserX, Building, FileText, ClipboardCheck, Building2, Zap, Award, UserPlus
+  Book, Handshake, Target, Hourglass, UserX, Building, FileText, ClipboardCheck, Building2, Zap, Award, UserPlus
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-// Helper component for common card structure
+
 const DashboardCard = ({ title, children, className = '' }) => (
   <div className={`bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ${className}`}>
     <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-3 border-gray-200">{title}</h3>
@@ -13,7 +13,7 @@ const DashboardCard = ({ title, children, className = '' }) => (
   </div>
 );
 
-// Overall Page Component
+// Overall Page Components
 const Overall = ({ onNavigate }) => {
   const overallData = {
     totalTarget: 8000,
@@ -156,7 +156,7 @@ const Overall = ({ onNavigate }) => {
 };
 
 
-// Training Page Component
+
 const Training = () => {
   const monthlyData = [
     { month: 'Before March', enrolled: 240, wage: 165, self: 75, completed: 196, employed: 121, selfEmployed: 75 },
@@ -312,7 +312,7 @@ const App = () => {
   const [selectedView, setSelectedView] = useState('Cumulative');
   const [currentDate, setCurrentDate] = useState(''); // New state for the current date
 
-  // Highlight data for the carousel
+  // Highlighting data for the carousel
   const highlights = [
     { text: 'CSR: Target: 1000 | ID: 720 | Left: 280 | Pipe: 30' },
     { text: 'Gov: Target: 2500 | ID: 180 | Left: 2320 | Pipe: 1800' },
@@ -327,25 +327,16 @@ const App = () => {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return today.toLocaleDateString('en-US', options);
     };
-    setCurrentDate(getCurrentDate()); // Set the date on component mount
+    setCurrentDate(getCurrentDate()); 
 
-    // Set up the carousel interval
+   
     const interval = setInterval(() => {
-      setCurrentHighlightIndex(prevIndex => 
+      setCurrentHighlightIndex(prevIndex =>
         (prevIndex + 1) % highlights.length
       );
-    }, 5000); // Change highlight every 5 seconds
+    }, 5000); // Changes will in highlight every 5 seconds
 
-    // This useEffect is a placeholder for potential Firebase initialization.
-    // For this assignment, it's not strictly necessary for the UI,
-    // but kept as per general instructions for React apps.
-    const initializeFirebase = async () => {
-      // Dummy Firebase init for demonstration
-      // In a real app, you'd initialize Firebase here.
-    };
-    initializeFirebase();
-
-    // Cleanup function to clear the interval when the component unmounts
+  
     return () => clearInterval(interval);
   }, []);
 
@@ -408,9 +399,9 @@ const App = () => {
         </nav>
       </aside>
 
-      {/* Main Content */}
+      
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
+       
         <header className="bg-white shadow-md p-4 flex items-center justify-between z-40">
           <div className="flex items-center">
             <button className="md:hidden text-gray-600 mr-4" onClick={() => setIsSidebarOpen(true)}>
@@ -442,12 +433,12 @@ const App = () => {
                 <ChevronDown size={16} />
               </div>
             </div>
-           
+
             <img src="https://placehold.co/36x36/cccccc/333333?text=A" alt="User Avatar" className="rounded-full border-2 border-indigo-500" />
           </div>
         </header>
 
-        {/* Page Content */}
+  
         <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
           {renderPageContent()}
         </main>
